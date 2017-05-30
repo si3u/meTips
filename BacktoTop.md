@@ -33,7 +33,6 @@
 #back-to-top a {
     width: 260px;
     height: 80px;
-    display: block;
     color: #81af53;
 }
 
@@ -51,35 +50,33 @@
 ```
 
 ```js
-(function () {
-            "use strict";
+    (function () {
+        "use strict";
+        var docElem = document.documentElement,
+            didScroll = false,
+            changeHeaderOn = 550;
+        document.querySelector('#back-to-top');
+        function init() {
+            window.addEventListener('scroll', function () {
+                if (!didScroll) {
+                    didScroll = true;
+                    setTimeout(scrollPage, 50);
+                }
+            }, false);
+        }
+    })();
 
-            var docElem = document.documentElement,
-                didScroll = false,
-                changeHeaderOn = 550;
-            document.querySelector('#back-to-top');
-            function init() {
-                window.addEventListener('scroll', function () {
-                    if (!didScroll) {
-                        didScroll = true;
-                        setTimeout(scrollPage, 50);
-                    }
-                }, false);
-            }
+    $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+        if (scroll >= 50) {
+            $("#back-to-top").addClass("show");
+        } else {
+            $("#back-to-top").removeClass("show");
+        }
+    });
 
-        })();
-
-        $(window).scroll(function (event) {
-            var scroll = $(window).scrollTop();
-            if (scroll >= 50) {
-                $("#back-to-top").addClass("show");
-            } else {
-                $("#back-to-top").removeClass("show");
-            }
-        });
-
-        $('a[href="#top"]').on('click', function () {
-            $('html, body').animate({scrollTop: 0}, 'slow');
-            return false;
-        });
+    $('a[href="#top"]').on('click', function () {
+        $('html, body').animate({scrollTop: 0}, 'slow');
+        return false;
+    });
 ```
