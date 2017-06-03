@@ -15,3 +15,14 @@
 <meta property="place:location:latitude" content="10.760333" />
 <meta property="place:location:longitude" content="106.6949392" />
 ```
+
+
+```css
+iframe[name="google_conversion_frame"] {
+	display: none;
+}
+
+iframe[name="google_cookie_match_frame"] {
+	display: none;
+}
+```
